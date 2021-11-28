@@ -86,3 +86,6 @@ case "$ANSWER" in
     * )
    echo "You didn't follow directions. Time to restart, should be quicker this time. Make sure to just press Y or N next time."
 esac
+
+#END OF PROGRAM
+#MAKE SURE TO COMMENT YOUR CODE.
