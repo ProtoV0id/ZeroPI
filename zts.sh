@@ -5,18 +5,40 @@
 # Updated: 11/27/2021    #
 ##########################
 clear
-echo ----------------------------
-echo ZeroTierScript by PROTOVOID
-echo ZeroTier version 1.8.3
-echo ----------------------------
+echo "  ______               _______  _              _____              _         _   ";
+echo " |___  /              |__   __|(_)            / ____|            (_)       | |  ";
+echo "    / /  ___  _ __  ___  | |    _   ___  _ __| (___    ___  _ __  _  _ __  | |_ ";
+echo "   / /  / _ \| '__|/ _ \ | |   | | / _ \| '__|\___ \  / __|| '__|| || '_ \ | __|";
+echo "  / /__|  __/| |  | (_) || |   | ||  __/| |   ____) || (__ | |   | || |_) || |_ ";
+echo " /_____|\___||_|   \___/ |_|   |_| \___||_|  |_____/  \___||_|   |_|| .__/  \__|";
+echo "                                                                    | |         ";
+echo "                                                                    |_|         ";
+echo                           ----------------------------
+echo                           ZeroTierScript by PROTOVOID
+echo                             ZeroTier version 1.8.3
+echo                           ----------------------------
 sleep 1.5
 #Variables and Misc Stuff
-D=$(pwd)
+D=$(pwd) #stores the pwd in a variable to be called later. This part gave me propblems and can propbably be updated.
+FILE="zerotier-one_1.8.3_armhf.deb"
 # FILE is the most updated version. This is the only variable that should need updating in the future.
 # NETID: ZeroTier network ID needed for loggin in. Not saved or sent anywhere.
 
+#Checking to see if they want to run. Will need to work on a function or python version for a full program version. If you want to help contact me on instagram @protov0id
+
+echo "This is for a first time install or update only. If you already have the most up to date version downloaded. Please check the README for further instructions."
+read -p "Do you wish to continue? Y/N " ANSWER1
+case $ANSWER1 in
+  [yY] | [yY][eE][sS] )
+  echo "Checking to see if ZeroTier is already installed..."
+  sleep 1.5
+    ;;
+    [nN] | [nN][oO] )
+    echo "Goodbye."
+    exit
+esac
+
 #First see if ZeroTier is already installed
-FILE="zerotier-one_1.8.3_armhf.deb"
 if [ -f "$FILE" ]
 then
   echo "Zerotier is already installed and is the most recent verision."
@@ -55,6 +77,7 @@ else
   sleep 1.5
   #exit
 fi
+
 #Have them double check their network ID
 echo "It's time to join your network. You entered $NETID as your Network ID"
 read -p "Is this your correct Network ID? Press Y to continue or press N to change it." ANSWER
@@ -72,7 +95,8 @@ case "$ANSWER" in
     [nN] | [nN][oO])
     read -p "Please enter your Network ID from Zerotier." NETID2
     $(sudo zerotier-cli join $NETID2)
-    #
+
+    #Same thing happens as yes, but with the new network id
     if $(sudo zerotier-cli status) | grep -q 'ONLINE'; then
       echo "You're connected!"
       $(sudo update-rc.d zerotier-one enable)
