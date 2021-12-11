@@ -21,7 +21,7 @@ sleep 1.5
 
 #Variables and Misc Stuff
 D=$(pwd) #stores the pwd in a variable to be called later. This part gave me propblems and can propbably be updated.
-CHK=$(dpkg -s zerotier-one) | grep -q "1.8.3" #checks to see if this is the most up to date file
+#CHK=$(dpkg -s zerotier-one) | grep -q "1.8.3" #checks to see if this is the most up to date file
 FILE="zerotier-one_1.8.3_armhf.deb"
 
 # FILE is the most updated version. This is the only variable that should need updating in the future.
@@ -33,7 +33,7 @@ FILE="zerotier-one_1.8.3_armhf.deb"
 echo "Welcome to ZeroPI! This script will check for/install the most up to date ZeroTier installation."
 #####################################################################################
 #First see if ZeroTier is already installed
-if [ command $CHK ]
+if [ $(dpkg -s zerotier-one) | grep -q "1.8.3" ]
 then
   echo "Zerotier is already installed and is the most recent verision."
   echo "Follow my instagram @protov0id for updates to this script!"
@@ -46,7 +46,7 @@ fi
 #####################################################################################
 #In the case of ZT already being installed, we will remove the package
 $(sudo apt remove zerotier-one -y && sudo apt purge zerotier-one -y)
-
+$(sudo apt autoremove)
 #####################################################################################
 #Get their network ID for later portion
 read -p "what is your ZeroTier Network ID? " NETID
