@@ -24,7 +24,8 @@ FILE="zerotier-one_1.8.3_armhf.deb"
 # FILE is the most updated version. This is the only variable that should need updating in the future.
 # NETID: ZeroTier network ID needed for loggin in. Not saved or sent anywhere.
 
-#Checking to see if they want to run. Will need to work on a function or python version for a full program version. If you want to help contact me on instagram @protov0id
+#Checking to see if they want to run.
+#Will need to work on a function or python version for a full program version. If you want to help contact me on instagram @protov0id
 
 echo "This is for a first time install or update only. If you already have the most up to date version downloaded. Please check the README for further instructions."
 read -p "Do you wish to continue? Y/N " ANSWER1
@@ -34,7 +35,7 @@ case $ANSWER1 in
   sleep 1.5
     ;;
     [nN] | [nN][oO] )
-    echo "Goodbye."
+    echo "Follow my instagram @protov0id for updates to this script! Goodbye."
     exit
 esac
 
@@ -56,13 +57,13 @@ sleep 1.5
 echo "Checking for neccessary program..."
 sleep 1.5
 command -v gdebi >/dev/null 2>&1 || { echo >&2 "I require gdebi but it's not installed."; read -p "Press ENTER to install gdebi."; }
-#sudo apt install gdebi -y
+sudo apt install gdebi -y
 
 #Download most recent ZeroTier Version
 sleep 1.5
 echo "Downloading most recent Zerotier version..."
 sleep 1.5
-#wget https://download.zerotier.com/RELEASES/1.8.3/dist/debian/buster/"$FILE"
+wget https://download.zerotier.com/RELEASES/1.8.3/dist/debian/buster/"$FILE"
 echo "Installing Zerotier..."
 sleep 1.5
 sudo $(gdebi "$D/$FILE")
@@ -100,7 +101,7 @@ case "$ANSWER" in
     if $(sudo zerotier-cli status) | grep -q 'ONLINE'; then
       echo "You're connected!"
       $(sudo update-rc.d zerotier-one enable)
-      echo "You're all done! Please let me know what you though of the process. For updates follow my instagram @protov0id."
+      echo "You're all done! Please let me know what you though of the process. For updates follow my Instagram @protov0id."
     else
       echo "Error. Please consult the Zerotier Website and make sure you've connected the device on the website. If it is a distribution error, check the README."
       sleep 1.5
