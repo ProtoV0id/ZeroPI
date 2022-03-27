@@ -36,7 +36,7 @@ read -p "When ready, press enter to continue."
 sleep 1.5
 #####################################################################################
 #First see if ZeroTier is already installed
-if [ $(dpkg -s zerotier-one) | grep -q "1.8.3" ]
+if $(dpkg -s zerotier-one) | grep -q "1.8.3"
 then
   echo "Zerotier is already installed and is the most recent verision."
   echo "Follow my instagram @protov0id for updates to this script!"
