@@ -19,6 +19,7 @@ echo                             ZeroTier version 1.8.3
 echo                           ----------------------------
 sleep 1.5
 #LOTS OF RANDOM AND COMMENTED OUT CODE. MY FULL IDEA HASN'T WORKED YET. UPDATES WILL OCCUR.
+
 #Variables and Misc Stuff
 D=$(pwd) #stores the pwd in a variable to be called later. This part gave me propblems and can propbably be updated.
 #CHK=$(dpkg -s zerotier-one) | grep -q "1.8.3" #checks to see if this is the most up to date file
@@ -55,6 +56,8 @@ fi
 read -p "what is your ZeroTier Network ID? " NETID
 
 #####################################################################################
+#COULDNT FIGURE OUT A PROPPER WAY FOR THIS TO WORK WITHOUT BREAKING THE CODE SOMEWHERE
+#DECIDED TO USE DPKG INSTEAD OF GDEBI
 # #Check for gdebi (Needed for propper install)
 # sleep 1.5
 # echo "Checking for neccessary program..."
