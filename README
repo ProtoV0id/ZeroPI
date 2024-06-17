@@ -1,0 +1,61 @@
+# Protovoid
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+## Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
+## Description
+
+ZeroTier Script (ZTS) is a free script to assist in downloading and installing ZeroTier VPN's. This script is updated irregularly to the latest version of ZeroTier. In order to use this script DPKG must be installed and you must have a ZeroTier account prior to running the script. 
+
+
+## Installation
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+- DPKG
+- ZeroTier Account 
+    - Have your NetworkID available
+
+### Installation Steps
+
+1. Clone the repo
+    ```sh
+    git clone https://github.com/your-username/Protovoid.git
+    ```
+2. Navigate to the project directory
+    ```sh
+    cd Protovoid
+    ```
+3. Install dependencies
+    ```sh
+    sudo apt install dpkg
+    ```
+
+## Usage
+
+To use this project, follow these steps:
+
+cd into the downloaded directory and run the following command:
+
+```sh
+chmod +x zts
+```
+
+Once ZTS is executable run:
+
+```sh
+./zts.sh
+```
+
