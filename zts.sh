@@ -38,7 +38,7 @@ sleep 1.5
 #####################################################################################
 
 #First see if ZeroTier is already installed
-if $(dpkg -s zerotier-cli status -v) | grep -q "1.8.3"
+if $(dpkg -s zerotier-cli status -v) | grep -q "1.8.3" #shows DPKG Query error when ZTO is not installed. Want to make those hidden to justt show the next line of the program
 then
   echo "Zerotier is already installed and is the most recent verision."
   echo "Follow my instagram @protov0id for updates to this script!"
@@ -74,12 +74,12 @@ sleep 1.5
 wget https://download.zerotier.com/RELEASES/1.14.0/dist/debian/buster/"$FILE"
 echo "Installing Zerotier..."
 sleep 1.5
-sudo $(dpkg -I "$D/$FILE")
+sudo $(dpkg -i "$D/$FILE") #FIXED was a capital I not lowercase 
 #####################################################################################
 #Zerotier should be installed now to check it.
 sleep 1.5
 echo "Checking status..."
-if $(sudo zerotier-cli status) | grep -q 'ONLINE'; then
+if sudo $(zerotier-cli status) | grep -q 'ONLINE'; then #removed sudo from the brackets inside (didnt work) moved sudo to outside the brackets
   echo "You're connected!"
 else
   echo "Error. Please consult the Zerotier Website. If it is a distribution error, check the README."
